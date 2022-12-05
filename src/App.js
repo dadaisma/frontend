@@ -14,7 +14,7 @@ const [toDoId, setToDoId] = useState("")
 
 
 useEffect(() => {
-  getAllToDo(setToDo)
+   getAllToDo(setToDo)
 }, [])
 
 const updateMode = (_id, text) => {
@@ -42,8 +42,8 @@ const updateMode = (_id, text) => {
 <div
             className="add"
             onClick={isUpdating ?
-              () => updateToDo(toDoId, text, setToDo, setText, setIsUpdating)
-              : () => addToDo(text, setText, setToDo)}>
+              () => updateToDo(toDoId, text, setToDo, setText, setIsUpdating, isUpdating)
+              : () => addToDo(text, setText, setToDo, setIsUpdating, isUpdating)}>
             {isUpdating ? "Update" : "Add"}
           </div>
 

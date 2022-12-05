@@ -7,7 +7,20 @@ and so on – or it could be your own backend Node. js server
 */
 import axios from "axios";
 
-const baseUrl="http://localhost:5000";
+const baseUrl="http://localhost:5000/";
+
+const refreshTodoList = (setToDo, setText, isUpdating, setIsUpdating) =>{
+    if(isUpdating === true){
+        console.log('Paso por aqui para actualizar')
+        setText("")
+        getAllToDo(setToDo)
+        setIsUpdating(false)
+    }else{
+            console.log('Paso por aqui la primera vez')
+            setText("")
+            getAllToDo(setToDo)
+    }
+}
 
 const getAllToDo = (setToDo) => {
     axios
@@ -18,38 +31,31 @@ const getAllToDo = (setToDo) => {
         })
 }
 
-const addToDo = (text, setText, setToDo) => {
-
+const addToDo = (text, setText, setToDo, setIsUpdating, isUpdating) => {
     axios
         .post(`${baseUrl}`, { text })
         .then((data) => {
             console.log(data);
-            setText("")
-            getAllToDo(setToDo)
+            refreshTodoList(setToDo, setText, setIsUpdating, isUpdating)
         })
         .catch((err) => console.log(err))
-
 }
 
-const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
-
+const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating, isUpdating) => {
     axios
-        .patch(`${baseUrl}/patch`, { _id: toDoId, text })
+        .patch(`${baseUrl}${toDoId}`, { text })
         .then((data) => {
-            setText("")
-            setIsUpdating(false)
-            getAllToDo(setToDo)
+            refreshTodoList(setToDo, setText, isUpdating, setIsUpdating)
         })
         .catch((err) => console.log(err))
-
 }
 
-const deleteToDo = (_id, setToDo) => {
 
+const deleteToDo = (toDoId, setToDo) => {
     axios
-        .delete(`${baseUrl}`, { _id })
+        .delete(`${baseUrl}${toDoId} `)
         .then((data) => {
-            console.log(data)
+            
             getAllToDo(setToDo)
         })
         .catch((err) => console.log(err))
