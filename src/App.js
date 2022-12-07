@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ToDo from "./components/Todo";
-import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApi";
-
+//import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApi";
+import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApiFetch";
 
 
 function App() {
@@ -52,10 +52,14 @@ const updateMode = (_id, text) => {
     <div className="list">
 
 {toDo.map((item) => <ToDo 
-key={item._id} 
+key={item.id} 
 text={item.text}
 updateMode = {() => updateMode(item._id, item.text)}
-deleteToDo = {() => deleteToDo(item._id, setToDo)} />)}
+deleteToDo = {() => deleteToDo(item._id, setToDo)} 
+/>)}
+
+{/* {toDo && toDo.map((item) => <ToDo key={item._id} item={item} />)} */}
+
 
 </div>
     </div> 
