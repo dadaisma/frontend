@@ -4,6 +4,8 @@ import ToDo from "./components/Todo";
 import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApiFetch";
 
 
+
+
 function App() {
   const [toDo, setToDo] = useState([])
   //input start empty
@@ -11,6 +13,7 @@ function App() {
 const [isUpdating, setIsUpdating] = useState(false)
 const [toDoId, setToDoId] = useState("")
 
+//const [isChecked, setIsChecked] = useState(done);
 
 
 useEffect(() => {
@@ -54,11 +57,14 @@ const updateMode = (_id, text) => {
 {toDo.map((item) => <ToDo 
 key={item.id} 
 text={item.text}
-updateMode = {() => updateMode(item._id, item.text)}
+done={item.done}
+priority={item.priority}
+updateMode = {() => updateMode(item._id, item.text, item.done)}
 deleteToDo = {() => deleteToDo(item._id, setToDo)} 
 />)}
 
-{/* {toDo && toDo.map((item) => <ToDo key={item._id} item={item} />)} */}
+
+
 
 
 </div>
