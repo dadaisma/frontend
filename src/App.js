@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ToDo from "./components/Todo";
 //import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApi";
 import {getAllToDo, addToDo, updateToDo, deleteToDo} from "./utils/HandleApiFetch";
-
+import {CheckIt }from "./components/checkbox";
 
 
 
@@ -61,6 +61,7 @@ done={item.done}
 priority={item.priority}
 updateMode = {() => updateMode(item._id, item.text, item.done)}
 deleteToDo = {() => deleteToDo(item._id, setToDo)} 
+
 />)}
 
 

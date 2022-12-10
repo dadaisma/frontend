@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, done} from 'react';
+import { BiCheckbox, BiCheckboxMinus } from 'react-icons/bi';
+
 
 function CheckIt () {
-    const[checked, setChecked] = useState(false);
+    const[checked, setChecked] = useState(done);
     const validate = () =>{
-        //setStateCar(!stateCar);
-        setChecked(prevValue=>!prevValue)
+        // example ... setStateCar(!stateCar);
+        setChecked(done=>!done)
     }
     return(
         <div className='CheckIt'> 
-        <h3> is Done?: {checked?"it's Done" : "it's UnDone"}</h3>
-        <button onClick={validate}>mark when done</button>
-        
+        <button onClick={validate}> {checked?"it's Done" : "Pending"} </button>      
         </div>
-        
+    
     );
 
 }
