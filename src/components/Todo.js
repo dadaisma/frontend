@@ -5,6 +5,7 @@ import React from 'react'
 //install and import icons // npm i react-icons
 import {  BiEdit} from "react-icons/bi"
 import {AiFillDelete} from "react-icons/ai"
+import { BiCheckCircle } from 'react-icons/bi'
 import CheckIt from './checkbox'
 import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers'
 
@@ -14,20 +15,21 @@ import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers'
 
 
 
-const ToDo = ({text, done, updateMode, deleteToDo, priority, checkbox}) => {
+const ToDo = ({text, done, updateMode, deleteToDo, priority,}) => {
     return (
         <div className="todo">
             <div className="text">{text}</div>
-            {/* <div className="text">{priority}</div> */}
+            <div className="text">Priority: {priority}</div>
             <div>{done}</div>
-            {/* <BiCheckCircle onClick={go=>{console.log('yo')}}>{done}</BiCheckCircle> */}
+            {/* <BiCheckCircle onClick={go=>{console.log('yo')}}>
+            </BiCheckCircle> */}
             
             <div className="icons">
                 <BiEdit className='icon' onClick={updateMode} />
                 <AiFillDelete className='icon' onClick={deleteToDo} />
             </div>
           
-            <CheckIt {...done} />
+            <CheckIt />
         </div>
        
     )

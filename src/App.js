@@ -10,6 +10,7 @@ function App() {
   const [toDo, setToDo] = useState([])
   //input start empty
   const [text, setText] = useState("")
+  //edit
 const [isUpdating, setIsUpdating] = useState(false)
 const [toDoId, setToDoId] = useState("")
 

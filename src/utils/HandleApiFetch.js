@@ -68,6 +68,32 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating, isUpdating) =
     .catch((err) => console.log(err))       
 }
 
+//----------
+const updateCheck = (toDoId, done, setIsUpdating, isUpdating) => {
+    done ={
+        done
+    }
+   
+   fetch(`${baseUrl}${toDoId}`, {
+    method: "PATCH",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application.json",
+    }, body: JSON.stringify(done)})
+    .then(res => res.json())
+    .then((data) => {
+        refreshTodoList( isUpdating, setIsUpdating)
+    })
+    .catch((err) => console.log(err))       
+}
+//--------------
+
+
+
+
+
+
 const deleteToDo = (toDoId, setToDo) => {
     fetch(`${baseUrl}${toDoId}`, {
         method: "DELETE",
@@ -85,5 +111,5 @@ const deleteToDo = (toDoId, setToDo) => {
 
 
 
-export { getAllToDo, addToDo, updateToDo, deleteToDo }
+export { getAllToDo, addToDo, updateToDo, deleteToDo, updateCheck }
 
