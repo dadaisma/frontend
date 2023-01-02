@@ -8,11 +8,13 @@ const refreshTodoList = (setToDo, setText, isUpdating, setIsUpdating) =>{
     if(isUpdating === true){
        // console.log('Paso por aqui para actualizar')
         setText("")
+        
         getAllToDo(setToDo)
         setIsUpdating(false)
     }else{
        //     console.log('Paso por aqui la primera vez')
             setText("")
+            
             getAllToDo(setToDo)
     }
 }
@@ -53,6 +55,7 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating, isUpdating) =
     text ={
         text,   
     }
+    
    
    fetch(`${baseUrl}${toDoId}`, {
     method: "PATCH",

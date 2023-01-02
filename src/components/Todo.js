@@ -15,12 +15,13 @@ import { toHaveDescription } from '@testing-library/jest-dom/dist/matchers'
 
 
 
-const ToDo = ({text, done, updateMode, deleteToDo, priority,}) => {
+const ToDo = ({text, done, updateMode, deleteToDo, priority, fecha}) => {
     return (
         <div className="todo">
             <div className="text">{text}</div>
-            <div className="text">Priority: {priority}</div>
+            {/* <div className="text">Priority: {priority}</div> */}
             <div>{done}</div>
+            <div>{fecha}</div>
             {/* <BiCheckCircle onClick={go=>{console.log('yo')}}>
             </BiCheckCircle> */}
             

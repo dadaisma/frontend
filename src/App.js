@@ -14,6 +14,8 @@ function App() {
 const [isUpdating, setIsUpdating] = useState(false)
 const [toDoId, setToDoId] = useState("")
 
+const [priority, setPriority] =useState([])
+
 //const [isChecked, setIsChecked] = useState(done);
 
 
@@ -21,8 +23,9 @@ useEffect(() => {
    getAllToDo(setToDo)
 }, [])
 
-const updateMode = (_id, text) => {
+const updateMode = (_id, text, priority) => {
   setIsUpdating(true)
+  setPriority(priority)
   setText(text)
   setToDoId(_id)
 }
@@ -42,6 +45,8 @@ const updateMode = (_id, text) => {
       //will take what we input (e) element updating the state with setText
       onChange={(e)=>setText(e.target.value)}
       />
+   
+
 
 <div
             className="add"
@@ -60,7 +65,8 @@ key={item.id}
 text={item.text}
 done={item.done}
 priority={item.priority}
-updateMode = {() => updateMode(item._id, item.text, item.done)}
+fecha={item.fecha}
+updateMode = {() => updateMode(item._id, item.text, item.done, item.priority)}
 deleteToDo = {() => deleteToDo(item._id, setToDo)} 
 
 />)}
